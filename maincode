@@ -55,3 +55,26 @@ def send_by_button():
         ChatLog.config(state=DISABLED)
         ChatLog.yview(END)
 
+# The Following two functions are defined to add a placeholder or text
+def deletePlaceholder(event):
+    Placeholder.place_forget()
+    EntryBox.focus_set()    
+
+def addPlaceholder(event):
+    Placeholder.place(x=6 , y=421 , height=70 , width = 265)
+
+
+#Add menus to the GUI
+main_menu = Menu(base) 
+file_menu = Menu(base)
+file_menu.add_command(lable = "New..")
+file_menu.add_command(label="Save As..")
+file_menu.add_command(label="Exit")         
+main_menu.add_cascade(label="File", menu=file_menu)
+#Add the rest of the menu options to the main menu
+main_menu.add_command(label="Edit")
+main_menu.add_command(label="Quit")
+base.config(menu=main_menu)
+
+now = datetime.now()
+current_time = now.strtime("%D - %H:%M \n")
