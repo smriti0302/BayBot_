@@ -478,7 +478,58 @@ def exe():
     Treatment = []
     Medication = []
     HomeRemedies = []
+    Input1=variable1.get()
+    Input2=variable2.get()
+    Input3=variable3.get()
+    Input1=Input1.upper()
+    Input2=Input2.upper()
+    Input3=Input3.upper()
+    Input4=variable4.get()
+    Input4=Input4.upper()
+    Input5=variable5.get()
+    Input5=Input5.upper()
 
+    
+    def GSearch(FinalisedDisease) :
+        query = FinalisedDisease
+        chrome_path = r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe %s'
+        for url in search(query, tld="co.in", num=1, stop = 1, pause = 4):
+            webbrowser.open("https://google.com/search?q=%s" % query)
+
+
+    with open(r'MasterData.csv', 'r', encoding='utf-8') as csvfile: 
+        csvReader = csv.reader(csvfile)
+        for row in csvReader:
+            Index.append(row[0]) 
+            Disease.append(row[1])  
+            Link.append(row[2])     
+            Symptoms.append(row[3])
+            Causes.append(row[4])
+            RiskFactor.append(row[5])
+            OverView.append(row[6])
+            Treatment.append(row[7])
+            Medication.append(row[8])
+            HomeRemedies.append(row[9])
+ 
+    Temp = len(Index)
+    for i in range(0, 1183):
+        if Input1 and Input2 and Input3 and Input4 and Input5 in str.upper(Symptoms[i]) :
+             res = Disease[i]+'  '+Link[i]
+             ChatLog.insert(END, current_time+' ', ("small", "greycolour", "left"))
+             ChatLog.window_create(END, window=Label(ChatLog, fg="#000000", text=res, 
+             wraplength=200, font=("Arial", 10), bg="#DDDDDD", bd=4, justify="left"),padx=10, pady=10)
+             ChatLog.insert(END, '\n ', "right")
+             ChatLog.config(state=DISABLED)
+             ChatLog.yview(END)
+
+
+button=Button(base,text="DONE", command=exe)
+button.config(width=25)
+button.place(x=120,y=780)
+
+base.bind('<Return>', send)
+
+base.mainloop()
 
     
 
