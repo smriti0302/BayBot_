@@ -1,4 +1,16 @@
-x=1
-print(x)
-y=2
-print(y)
+from datetime import datetime
+from tkinter import *
+import textwrap
+import csv  #Imports
+import tkinter 
+from googlesearch import *
+import webbrowser
+from math import log
+from random import randint, uniform
+from signal import signal, SIGINT
+from sys import exit, stdout
+
+base = Tk()
+base.title("BayBot")
+base.geometry("{0}x{1}+0+0".format(base.winfo_screenwidth(), base.winfo_screenheight()))
+base.resizable(width=FALSE, height=FALSE)
