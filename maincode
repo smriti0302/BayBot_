@@ -267,13 +267,13 @@ class MyLabel(Label):
 
 
 
-anim1 = MyLabel(base, 'giphy.gif')
+anim1 = MyLabel(base, r'C:\Users\Sivakumar\Desktop\spacejam\giphy.gif')
 anim1.place(x=964, y=492)
-anim2 = MyLabel(base, 'giphy.gif')
+anim2 = MyLabel(base, r'C:\Users\Sivakumar\Desktop\spacejam\giphy.gif')
 anim2.place(x=482, y=492)
-anim3 = MyLabel(base, 'giphy.gif')
+anim3 = MyLabel(base, r'C:\Users\Sivakumar\Desktop\spacejam\giphy.gif')
 anim3.place(x=0, y=492)
-anim4 = MyLabel(base, 'baymax.gif')
+anim4 = MyLabel(base, r'C:\Users\Sivakumar\Desktop\spacejam\baymax.gif')
 anim4.place(x=1250, y=650)
 
 
@@ -478,6 +478,7 @@ def exe():
     Treatment = []
     Medication = []
     HomeRemedies = []
+
     Input1=variable1.get()
     Input2=variable2.get()
     Input3=variable3.get()
@@ -527,9 +528,66 @@ button=Button(base,text="DONE", command=exe)
 button.config(width=25)
 button.place(x=120,y=780)
 
+def BMI():
+    h=height.get()
+    w=weight.get()
+    h=float(h)
+    w=float(w)
+    bmi = w/(h**2)
+    if (bmi < 18.5): 
+        ChatLog.config(state=NORMAL)
+        ChatLog.config(foreground="#0000CC", font=("Helvetica", 9))
+        res = "You are underweight!! Your BMI is:"+str(bmi)
+        ChatLog.insert(END, current_time, ("small", "colour"))
+        ChatLog.insert(END,textwrap.fill(res,30)+'\n\n')
+        ChatLog.config(state=DISABLED)
+        ChatLog.yview(END) 
+  
+    elif ( bmi >= 18.5 and bmi < 24.9): 
+        ChatLog.config(state=NORMAL)
+        ChatLog.config(foreground="#0000CC", font=("Helvetica", 9))
+        res = "Your weight is normal!! Your BMI is:"+str(bmi)
+        ChatLog.insert(END, current_time, ("small", "colour"))
+        ChatLog.insert(END,textwrap.fill(res,30)+'\n\n')
+        ChatLog.config(state=DISABLED)
+        ChatLog.yview(END)  
+  
+    elif ( bmi >= 24.9 and bmi < 30): 
+        ChatLog.config(state=NORMAL)
+        ChatLog.config(foreground="#0000CC", font=("Helvetica", 9))
+        res = "You are overweight!! Your BMI is:"+str(bmi)
+        ChatLog.insert(END, current_time, ("small", "colour"))
+        ChatLog.insert(END,textwrap.fill(res,30)+'\n\n')
+        ChatLog.config(state=DISABLED)
+        ChatLog.yview(END) 
+  
+    elif ( bmi >=30): 
+        ChatLog.config(state=NORMAL)
+        ChatLog.config(foreground="#0000CC", font=("Helvetica", 9))
+        res = "You are obese!! Your BMI is:"+str(bmi)
+        ChatLog.insert(END, current_time, ("small", "colour"))
+        ChatLog.insert(END,textwrap.fill(res,30)+'\n\n')
+        ChatLog.config(state=DISABLED)
+        ChatLog.yview(END) 
+
+    
+l=Label(base,text="BMI CALCULATOR")
+l.place(x=620, y=550)
+l1=Label(base, text="Enter your height in metres:")
+l1.place(x=620, y=600)
+height = Entry(base, bd=5)
+height.place(x=620,y=630)
+l2=Label(base, text="Enter your weight in kg:")
+l2.place(x=620, y=660)
+weight = Entry(base, bd=5)
+weight.place(x=620, y=690)
+b=Button(base, text="DONE", command=BMI)
+b.place(x=620, y=720)
+
 base.bind('<Return>', send)
 
 base.mainloop()
+
 
     
 
