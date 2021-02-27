@@ -336,4 +336,35 @@ variable2.set(l[0])
 w2=OptionMenu(base, variable2, *l)
 w2.config(width=50)
 w2.place(x=40,y=600)
+variable3=StringVar(base)
+variable3.set(l[0])
+w3=OptionMenu(base, variable3, *l)
+w3.config(width=50)
+w3.place(x=40,y=640)
+
+variable4=StringVar(base)
+variable4.set(l[0])
+w4=OptionMenu(base, variable4, *l)
+w4.config(width=50)
+w4.place(x=40,y=680)
+
+variable5=StringVar(base)
+variable5.set(l[0])
+w5=OptionMenu(base, variable5, *l)
+w5.config(width=50)
+w5.place(x=40,y=720)
+
+def exe():
+    Index = []
+    Disease = []
+    Link = []
+    Symptoms = []
+    Causes = []
+    RiskFactor = []
+    OverView = []
+    Treatment = []
+    Medication = []
+    HomeRemedies = []
+
+    
 
