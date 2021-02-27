@@ -78,3 +78,30 @@ base.config(menu=main_menu)
 
 now = datetime.now()
 current_time = now.strtime("%D - %H:%M \n")
+# Create Chat window
+ChatLog = Text(base, bd=0, height="500", width="400", font="Helvetica", wrap="word")
+ChatLog.config(state=NORMAL)
+ChatLog.tag_config("right", justify="right")
+ChatLog.tag_config("small", font=("Helvetica", 7))
+ChatLog.tag_config("colour", foreground="#333333")
+ChatLog.insert(END, current_time, ("small","colour"))
+ChatLog.insert(END,textwrap.fill(f"Hello {'*Name*'}. How can I assist you?",30))
+ChatLog.insert(END,'\n')
+ChatLog.config(foreground="#0000CC", font=("Helvetica", 9))
+ChatLog.config(state=DISABLED)
+# Bind scrollbar to Chat window
+scrollbar = Scrollbar(base, command=ChatLog.yview, cursor="double_arrow")
+ChatLog['yscrollcommand'] = scrollbar.set
+
+# Create Button to send message
+SendButton = Button(base, font=("Comic Sans MS", 12, 'bold'), text="Send", width="8", height="25",
+                    bd=0, fg="#750216", activebackground="#AAAAAA", bg="#999999", command=send_by_button)
+
+# Create the box to enter message
+EntryBox = Text(base, bd=0, fg="#000000", bg="#fff5f5", highlightcolor="#750216",
+                width="29", height="5", font=("Arial",10), wrap="word")
+
+#Placeholder config and text:
+Placeholder = Text(base, bd=0, fg="#A0A0A0", bg="#fff5f5", highlightcolor="#750216",
+                   width="29", height="5", font=("Arial",10), wrap="word")
+Placeholder.insert("1.0", "Enter query here:")
