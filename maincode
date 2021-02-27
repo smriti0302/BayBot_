@@ -105,3 +105,63 @@ EntryBox = Text(base, bd=0, fg="#000000", bg="#fff5f5", highlightcolor="#750216"
 Placeholder = Text(base, bd=0, fg="#A0A0A0", bg="#fff5f5", highlightcolor="#750216",
                    width="29", height="5", font=("Arial",10), wrap="word")
 Placeholder.insert("1.0", "Enter query here:")
+# Place all components on the screen
+scrollbar.place(x=1510, y=6, height=406)
+ChatLog.place(x=6, y=6, height=410, width=1500)
+EntryBox.place(x=6, y=421, height=70, width=1440)
+SendButton.place(x=1450, y=421, height=70)
+Placeholder.place(x=6, y=421, height=70, width=276)
+
+Placeholder.bind("<FocusIn>", deletePlaceholder)
+EntryBox.bind("<FocusOut>", addPlaceholder)
+
+
+
+class MyLabel(Label):
+    def __init__(self, master, filename):
+        im = Image.open(filename)
+        seq =  []
+        try:
+            while 1:
+                seq.append(im.copy())
+                im.seek(len(seq)) # skip to next frame
+        except EOFError:
+            pass # we're done
+
+        try:
+            self.delay = im.info['duration']
+        except KeyError:
+            self.delay = 100
+
+        first = seq[0].convert('RGBA')
+        self.frames = [ImageTk.PhotoImage(first)]
+
+        Label.__init__(self, master, image=self.frames[0])
+
+        temp = seq[0]
+        for image in seq[1:]:
+            temp.paste(image)
+            frame = temp.convert('RGBA')
+            self.frames.append(ImageTk.PhotoImage(frame))
+
+        self.idx = 0
+
+        self.cancel = self.after(self.delay, self.play)
+
+    def play(self):
+        self.config(image=self.frames[self.idx])
+        self.idx += 1
+        if self.idx == len(self.frames):
+            self.idx = 0
+        self.cancel = self.after(self.delay, self.play)        
+
+
+
+anim1 = MyLabel(base, 'giphy.gif')
+anim1.place(x=964, y=492)
+anim2 = MyLabel(base, 'giphy.gif')
+anim2.place(x=482, y=492)
+anim3 = MyLabel(base, 'giphy.gif')
+anim3.place(x=0, y=492)
+anim4 = MyLabel(base, 'baymax.gif')
+anim4.place(x=1250, y=650)
