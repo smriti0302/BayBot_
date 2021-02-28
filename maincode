@@ -347,13 +347,13 @@ def proceed():
 
 
 
-    anim1 = MyLabel(base, r'C:\Users\Sivakumar\Desktop\spacejam\giphy.gif')
+    anim1 = MyLabel(base, r'giphy.gif')
     anim1.place(x=964, y=492)
-    anim2 = MyLabel(base, r'C:\Users\Sivakumar\Desktop\spacejam\giphy.gif')
+    anim2 = MyLabel(base, r'giphy.gif')
     anim2.place(x=482, y=492)
-    anim3 = MyLabel(base, r'C:\Users\Sivakumar\Desktop\spacejam\giphy.gif')
+    anim3 = MyLabel(base, r'giphy.gif')
     anim3.place(x=0, y=492)
-    anim4 = MyLabel(base, r'C:\Users\Sivakumar\Desktop\spacejam\baymax.gif')
+    anim4 = MyLabel(base, r'baymax.gif')
     anim4.place(x=1250, y=650)
 
 
@@ -674,7 +674,7 @@ root.title("BayBot")
 root.geometry("{0}x{1}+0+0".format(root.winfo_screenwidth(), root.winfo_screenheight()))
 root.resizable(width=FALSE, height=FALSE)
 root.configure(background='aquamarine2')
-anim = MyLabel(root, r'C:\Users\Sivakumar\Desktop\spacejam\intro.gif')
+anim = MyLabel(root, r'intro.gif')
 anim.place(x=500, y=150)
 bp=Button(root, text="PROCEED", command=proceed)
 bp.config(width=25)
